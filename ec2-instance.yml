@@ -1,0 +1,20 @@
+trigger: master
+pool:
+  vmImage: ubuntu-latest
+
+tasks:
+  #this task creates ec2 instance that are all need demo and are copies of the images specified
+  - name: provision a set of instances
+  ec2:
+    aws_access_key: AKIAREG46HQDMOGJAG52
+    aws_secret_key: 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
+    key_name: asquarezone
+    image: ami-0a63f96e85105c6d3
+    region: us-east-2
+    wait: true
+    exact_count: 1
+    count_tag:
+       Name: Demo
+    instance_tags:
+       Name: Demo
+    register: ec2    
